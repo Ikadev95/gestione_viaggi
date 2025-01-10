@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/api/dipendenti")
 public class DipendenteController {
-    static private DipendenteService dipendenteService;
+    final private DipendenteService dipendenteService;
 
     @GetMapping
     public ResponseEntity<List<Dipendente>> getDipendenti(){

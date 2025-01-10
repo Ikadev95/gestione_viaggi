@@ -2,18 +2,19 @@ package com.epicode.gestione_viaggi.dipendente;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.AllArgsConstructor;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 @Validated
 public class DipendenteService {
-    private final DipendenteRepo dipendenteRepo;
+    @Autowired
+    private DipendenteRepo dipendenteRepo;
 
     //restituisco tutti i dipendenti
     public List<Dipendente> findAllDipendenti(){
@@ -29,7 +30,7 @@ public class DipendenteService {
     }
 
     //inserisco un nuovo dipendente
-    public Dipendente createDipendente(DipendenteCreaRequest request){
+    public Dipendente createDipendente(@Valid DipendenteCreaRequest request){
         Dipendente dipendente = new Dipendente();
         if(dipendenteRepo.existsByEmail(request.getEmail()) || dipendenteRepo.existsByUsername(request.getUsername())){
             throw new EntityExistsException("il dipendente con questa mail esiste già");
