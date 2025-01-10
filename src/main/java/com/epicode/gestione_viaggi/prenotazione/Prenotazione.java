@@ -5,6 +5,8 @@ import com.epicode.gestione_viaggi.viaggio.Viaggio;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @Table(name = "prenotazioni")
@@ -21,4 +23,6 @@ public class Prenotazione {
     @JoinColumn(name = "viaggio_id", nullable = false)
     private Viaggio viaggio;
 
+    private LocalDate dataPrenotazione;
+    private String note;
 }
