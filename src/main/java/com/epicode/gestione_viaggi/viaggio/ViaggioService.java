@@ -31,10 +31,7 @@ public class ViaggioService {
 
     //modifico un viaggio
     public Viaggio modifyViaggio(Long id, @Valid ViaggioCreaRequest v){
-        Viaggio viaggio = new Viaggio();
-        if (!viaggioRepo.existsById(id)){
-            throw new EntityNotFoundException("il viaggio da modificare non è stato trovato");
-        }
+        Viaggio viaggio = getViaggioById(id);
         BeanUtils.copyProperties(v,viaggio);
         return viaggioRepo.save(viaggio);
     }

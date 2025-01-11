@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class ViaggioCreaRequest {
     @NotBlank
     private String destinazione;
-    @NotBlank
+    @NotNull
     private LocalDate data;
     @NotNull
     private StatoViaggio statoViaggio;
