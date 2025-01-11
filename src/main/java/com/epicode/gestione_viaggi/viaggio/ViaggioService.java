@@ -39,8 +39,8 @@ public class ViaggioService {
     //creo un viaggio
     public Viaggio createViaggio(@Valid ViaggioCreaRequest v){
         Viaggio viaggio = new Viaggio();
-        if(viaggioRepo.existsByDestinazione(v.getDestinazione()) && viaggioRepo.existsByData(v.getData())){
-            throw new EntityExistsException("il viaggio è già esistente");
+        if(viaggioRepo.existsByDestinazioneAndData(v.getDestinazione(), v.getData())){
+            throw new EntityExistsException("Il viaggio è già esistente");
         }
 
         BeanUtils.copyProperties(v,viaggio);

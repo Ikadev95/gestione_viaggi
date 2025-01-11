@@ -8,4 +8,5 @@ import java.time.LocalDate;
 public interface ViaggioRepo extends JpaRepository<Viaggio,Long> {
     Boolean existsByDestinazione(String d);
     Boolean existsByData(LocalDate data);
+    boolean existsByDestinazioneAndData(String destinazione, LocalDate data);
 }
