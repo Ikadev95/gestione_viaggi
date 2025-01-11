@@ -26,12 +26,12 @@ public class DipendenteController {
     }
 
     @PostMapping
-    public ResponseEntity<Dipendente> createDipendente(@RequestParam DipendenteCreaRequest d){
-        return new ResponseEntity<>(dipendenteService.createDipendente(d), HttpStatus.CREATED);
+    public ResponseEntity<Dipendente> createDipendente(@RequestBody DipendenteCreaRequest request){
+        return new ResponseEntity<>(dipendenteService.createDipendente(request), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Dipendente> modifyDipendente(@PathVariable Long id, @RequestBody Dipendente d){
+    public ResponseEntity<Dipendente> modifyDipendente(@PathVariable Long id, @RequestBody DipendenteCreaRequest d){
         return  ResponseEntity.ok(dipendenteService.modifyDipendente(id, d));
     }
 
