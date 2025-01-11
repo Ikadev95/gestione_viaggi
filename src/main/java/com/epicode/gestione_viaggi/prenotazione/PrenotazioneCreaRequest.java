@@ -11,6 +11,5 @@ public class PrenotazioneCreaRequest {
     private Long idDipendente;
     @NotNull
     private Long idViaggio;
-    private LocalDate dataPrenotazione = LocalDate.now();
     private String note;
 }

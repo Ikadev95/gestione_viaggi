@@ -39,4 +39,10 @@ public class ExceptionHandlerClass extends ResponseEntityExceptionHandler {
         }
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(value = UploadException.class)
+    protected ResponseEntity<String> uploadExceptionHandler(UploadException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
 }

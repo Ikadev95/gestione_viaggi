@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -39,5 +41,14 @@ public class DipendenteController {
     public ResponseEntity<String> deleteDipendente(@PathVariable Long id){
         dipendenteService.deleteDipendente(id);
         return new ResponseEntity<>("dipendente eliminato", HttpStatus.NO_CONTENT);
+    }
+
+    @PostMapping(path="/foto/{id}", consumes = "multipart/form-data")
+    public ResponseEntity<Map> uploadFoto(@RequestPart("file") MultipartFile file, @PathVariable Long id) {
+        String folder = "test";
+
+        Map result = dipendenteService.uploadeFoto(file, folder,id);
+
+        return ResponseEntity.ok(result);
     }
 }

@@ -23,6 +23,6 @@ public class Prenotazione {
     @JoinColumn(name = "viaggio_id", nullable = false)
     private Viaggio viaggio;
 
-    private LocalDate dataPrenotazione;
+    private LocalDate dataPrenotazione = LocalDate.now();
     private String note;
 }
