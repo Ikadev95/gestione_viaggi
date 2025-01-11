@@ -40,4 +40,10 @@ public class ViaggioController {
         return new ResponseEntity<>("viaggio eliminato", HttpStatus.NO_CONTENT);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> patchStato(@PathVariable Long id, StatoViaggio stato ){
+        Viaggio v = viaggioService.patchStato(id,stato);
+        return ResponseEntity.ok(v);
+    }
+
 }

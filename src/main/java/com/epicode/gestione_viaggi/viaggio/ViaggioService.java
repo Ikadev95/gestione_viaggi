@@ -55,4 +55,11 @@ public class ViaggioService {
         viaggioRepo.delete(getViaggioById(id));
         return true;
     }
+
+    //modifico lo stato del viaggio
+    public Viaggio patchStato(Long id, StatoViaggio statoViaggio){
+        Viaggio v = getViaggioById(id);
+        v.setStatoViaggio(statoViaggio);
+        return viaggioRepo.save(v);
+    }
 }
