@@ -8,4 +8,7 @@ import org.springframework.validation.annotation.Validated;
 @AllArgsConstructor
 @Validated
 public class PrenotazioneService {
+    final private PrenotazioneRepo prenotazioneRepo;
+
+
 }

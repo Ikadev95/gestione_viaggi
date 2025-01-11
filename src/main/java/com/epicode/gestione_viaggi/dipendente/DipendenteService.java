@@ -41,7 +41,7 @@ public class DipendenteService {
     }
 
     //modifico un dipendente
-    public Dipendente modifyDipendente(Long id, DipendenteCreaRequest d){
+    public Dipendente modifyDipendente(Long id, @Valid DipendenteCreaRequest d){
         Dipendente dip = findDipendenteById(id);
         BeanUtils.copyProperties(d,dip);
         return dipendenteRepo.save(dip);
